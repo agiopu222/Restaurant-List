@@ -5,8 +5,8 @@ const app = express()
 const exphbs = require('express-handlebars')
 
 // 設定樣板引擎
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars')
+app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: '.hbs' }));
+app.set('view engine', 'hbs')
 
 // 設定首頁路由
 app.get('/', (req, res) => {
