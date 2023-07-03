@@ -8,6 +8,9 @@ const exphbs = require('express-handlebars')
 app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: '.hbs' }));
 app.set('view engine', 'hbs')
 
+// 設定靜態檔案資料夾位置
+app.use(express.static('public'))
+
 // 設定首頁路由
 app.get('/', (req, res) => {
     res.render('index')
