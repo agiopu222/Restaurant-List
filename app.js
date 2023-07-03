@@ -20,8 +20,11 @@ app.get('/', (req, res) => {
 
 app.get('/restaurants/:id', (req, res) => {
   // console.log('req.params.id', req.params.id) //在首頁點選餐廳，會跑出正確的id
+  // const lists = restaurantList.results.find (
+  //   function(restaurants) {
+  //     return restaurants.id.toString() === req.params.id })
   const lists = restaurantList.results.find (
-    restaurants => restaurants.id.toString() === req.params.id)
+    restaurants => restaurants.id.toString() === req.params.id )
     
   res.render('show', { lists: lists })
   })
