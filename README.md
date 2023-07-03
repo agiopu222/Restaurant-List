@@ -5,7 +5,7 @@
 可進行搜尋、瀏覽詳細資訊、查詢Google地圖等功能
 
 ## 專案畫面
-![MyImage]()
+![MyImage](/Restaurant_List_photo.png)
 
 ## 目錄
 
