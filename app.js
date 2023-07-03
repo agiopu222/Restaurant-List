@@ -18,8 +18,12 @@ app.get('/', (req, res) => {
     res.render('index', { lists: restaurantList.results })
   })
 
-app.get('/', (req, res) => {
-  res.render('show', { lists: restaurantList.results })
+app.get('/restaurants/:id', (req, res) => {
+  // console.log('req.params.id', req.params.id) //在首頁點選餐廳，會跑出正確的id
+  const lists = restaurantList.results.find (
+    restaurants => restaurants.id.toString() === req.params.id)
+    
+  res.render('show', { lists: lists })
   })
 
 // 設定 port 3000
