@@ -18,16 +18,30 @@ app.get('/', (req, res) => {
     res.render('index', { lists: restaurantList.results })
   })
 
+// 設定search路由
+app.get('/search', (req, res) => {
+  // 輸入非餐廳名稱, 返回首頁
+  if (!req.query.keyword) {
+    return res.redirect("/")
+  }
+  // console.log('req.query', req.query)
+  const keyword = req.query.keyword
+  const filterRestaurantsData = restaurantList.results.filter ( restaurants => {
+      return restaurants.name.includes(keyword)
+  })
+  res.render('index', { lists: filterRestaurantsData, keyword: keyword})
+})
+
 app.get('/restaurants/:id', (req, res) => {
   // console.log('req.params.id', req.params.id) //在首頁點選餐廳，會跑出正確的id
   // const lists = restaurantList.results.find (
   //   function(restaurants) {
   //     return restaurants.id.toString() === req.params.id })
-  const lists = restaurantList.results.find (
-    restaurants => restaurants.id.toString() === req.params.id )
+  const list = restaurantList.results.find (
+    restaurant => restaurant.id.toString() === req.params.id )
     
-  res.render('show', { lists: lists })
-  })
+  res.render('show', { list: list })
+})
 
 // 設定 port 3000
 app.listen(3000, () => {
